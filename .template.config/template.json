@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "DillyzThe1",
+  "classifications": [ "AmongUs", "ClassLib" ],
+  "identity": "com.github.dillyzthe1.dillyzroletemplate",
+  "name": "DillyzRoleTemplate",
+  "shortName": "DillyzRoleTemplate",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  }
+}
