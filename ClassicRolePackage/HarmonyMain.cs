@@ -16,7 +16,7 @@ namespace CustomRolePackage
 
         public override void Load()
         {
-            Log.LogInfo($"{HarmonyMain.MOD_NAME} v{HarmonyMain.MOD_VERSION} loaded. Hooray!");
+            Log.LogInfo(HarmonyMain.MOD_NAME + " v" + HarmonyMain.MOD_VERSION + " loaded. Hooray!");
             harmony.PatchAll();
 
             #region jester
@@ -61,6 +61,6 @@ namespace CustomRolePackage
                 sheriffButton.cooldown = newvalue;
             });
             #endregion
-        }
+        } 
     }
 }

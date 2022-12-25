@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomRolePackage", "CustomRolePackage\CustomRolePackage.csproj", "{3096BDC8-1655-4DC1-87A1-FCF66203A4B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassicRolePackage", "ClassicRolePackage\ClassicRolePackage.csproj", "{0DFF6244-4173-4F39-9B5F-78B862A410FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3096BDC8-1655-4DC1-87A1-FCF66203A4B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3096BDC8-1655-4DC1-87A1-FCF66203A4B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3096BDC8-1655-4DC1-87A1-FCF66203A4B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3096BDC8-1655-4DC1-87A1-FCF66203A4B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DFF6244-4173-4F39-9B5F-78B862A410FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DFF6244-4173-4F39-9B5F-78B862A410FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DFF6244-4173-4F39-9B5F-78B862A410FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DFF6244-4173-4F39-9B5F-78B862A410FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8AA75A12-A251-42C5-B0F6-5D98937A3126}
+		SolutionGuid = {8503148C-ED1E-4520-8BAD-A4BAC8E531D4}
 	EndGlobalSection
 EndGlobal
