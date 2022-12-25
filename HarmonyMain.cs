@@ -2,6 +2,7 @@
 using BepInEx.IL2CPP;
 using DillyzRoleApi_Rewritten;
 using HarmonyLib;
+using UnityEngine;
 
 namespace ClassicRolePack
 {
@@ -26,11 +27,10 @@ namespace ClassicRolePack
             Log.LogInfo($"{HarmonyMain.MOD_NAME} v{HarmonyMain.MOD_VERSION} loaded.");
             harmony.PatchAll();
 
-            // You should view the docs, but here's two functions you might like:
-            // DillyzUtil.createRole
-            // DillyzUtil.addButton
-            //
-            // Please read up at https://github.com/DillyzThe1/DillyzRoleApi-Rewritten/wiki/ for more information.
+            Log.LogInfo("Adding a Jester!");
+            CustomRole role = DillyzUtil.createRole("Jester", "Get voted out to win.", true, false, new Color32(90, 50, 200, 255), false,
+                                                                    CustomRoleSide.LoneWolf, VentPrivilege.None, false, true);
+            role.a_or_an = "a";
         }
     }
 }
