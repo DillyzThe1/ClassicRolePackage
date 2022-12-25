@@ -1,6 +1,0 @@
-bin/*
-obj/*
-*.ini
-*.dll
-.vs/*
-*.sln
