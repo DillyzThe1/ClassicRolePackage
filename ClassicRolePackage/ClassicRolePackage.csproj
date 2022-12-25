@@ -46,7 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sheriff_kill.png" />
+    <EmbeddedResource Include="sheriff_kill.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -471,5 +471,8 @@ start "Among Us" "%25AmongUsModDir%25/Among Us.exe"</PostBuildEvent>
     <Reference Include="WasmDisassembler">
       <HintPath>$(AmongUsModDir)\BepInEx\core\WasmDisassembler.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="jester.png" />
   </ItemGroup>
 </Project>
