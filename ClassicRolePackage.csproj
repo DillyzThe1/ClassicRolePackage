@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PostBuildEvent>xcopy ".\$(AssemblyName).dll" "%25AmongUsModDir%25\BepInEx\plugins\" /y
-start "Among Us" "%25AmongUsModDir%25/Among Us.exe"</PostBuildEvent>
+    <PostBuildEvent>xcopy ".\$(AssemblyName).dll" "%AmongUsModDir%\BepInEx\plugins\" /y
+start "Among Us" "%AmongUsModDir%/Among Us.exe"</PostBuildEvent>
+    <AssemblyName>ClassicRolePackage</AssemblyName>
+    <RootNamespace>ClassicRolePackage</RootNamespace>
   </PropertyGroup>
 	<ItemGroup>
 		<Reference Include="DillyzRoleApi-Rewritten">
