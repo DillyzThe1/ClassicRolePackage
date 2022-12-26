@@ -62,6 +62,14 @@ namespace CustomRolePackage
                 sheriffButton.cooldown = newvalue;
             });
             #endregion
-        } 
+
+            #region detective
+            Log.LogInfo("Adding a Detective!");
+            CustomRole detective = DillyzUtil.createRole("Detective", "Use evidence to trace impostors.", true, false, new Color32(110, 150, 255, 255), false,
+                                                                    CustomRoleSide.Crewmate, VentPrivilege.None, false, true);
+            detective.a_or_an = "a";
+            detective.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.detective.png");
+            #endregion
+        }
     }
 }
