@@ -78,7 +78,7 @@ namespace ClassicRolePackage
         public static Sprite stepSprite;
         public static Sprite GetFootStepSprite() { 
             if (stepSprite == null)
-                stepSprite = DillyzUtil.getSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.step.png");
+                stepSprite = DillyzUtil.getSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.step.png");
             return stepSprite;
         }
 
@@ -86,7 +86,7 @@ namespace ClassicRolePackage
         public static Sprite GetFootStepOutlineSprite()
         {
             if (stepSprite_Outline == null)
-                stepSprite_Outline = DillyzUtil.getSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.step_outline.png");
+                stepSprite_Outline = DillyzUtil.getSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.step_outline.png");
             return stepSprite_Outline;
         }
     }

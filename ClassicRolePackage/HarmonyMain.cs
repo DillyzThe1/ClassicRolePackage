@@ -38,7 +38,7 @@ namespace CustomRolePackage
             CustomRole jester = DillyzUtil.createRole("Jester", "Get voted out to win.", true, false, new Color32(90, 50, 200, 255), false,
                                                                     CustomRoleSide.LoneWolf, VentPrivilege.None, false, true);
             jester.a_or_an = "a";
-            jester.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.jester.png");
+            jester.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.jester.png");
             #endregion
 
             #region sheriff
@@ -46,12 +46,12 @@ namespace CustomRolePackage
             CustomRole sheriffRole = DillyzUtil.createRole("Sheriff", "Kill the impostor or suicide.", true, true, new Color32(255, 185, 30, 255), false,
                                                                     CustomRoleSide.Crewmate, VentPrivilege.None, false, true);
             sheriffRole.a_or_an = "a";
-            sheriffRole.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.sheriff.png");
+            sheriffRole.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.sheriff.png");
 
             bool killoncrewkill = true;
 
             Log.LogInfo("Adding a Sheriff button!");
-            CustomButton sheriffButton = DillyzUtil.addButton(Assembly.GetExecutingAssembly(), "Sheriff Kill Button", "ClassicRolePackage.sheriff_kill.png", -1f, true,
+            CustomButton sheriffButton = DillyzUtil.addButton(Assembly.GetExecutingAssembly(), "Sheriff Kill Button", "ClassicRolePackage.Assets.sheriff_kill.png", -1f, true,
             new string[] { "Sheriff" }, new string[] { }, delegate (KillButtonCustomData button, bool success)
             {
                 if (!success)
@@ -82,10 +82,10 @@ namespace CustomRolePackage
             CustomRole detective = DillyzUtil.createRole("Detective", "Use evidence to trace impostors.", true, false, new Color32(110, 150, 255, 255), false,
                                                                     CustomRoleSide.Crewmate, VentPrivilege.None, false, true);
             detective.a_or_an = "a";
-            detective.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.detective.png");
+            detective.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.detective.png");
 
             Log.LogInfo("Adding the Detectives's search button!");
-            detectiveSearchButton = DillyzUtil.addButton(Assembly.GetExecutingAssembly(), "Detective Search", "ClassicRolePackage.detective_search.png", 35f, 
+            detectiveSearchButton = DillyzUtil.addButton(Assembly.GetExecutingAssembly(), "Detective Search", "ClassicRolePackage.Assets.detective_search.png", 35f, 
                 false, new string[] { "Detective" }, new string[] { }, delegate(KillButtonCustomData button, bool success) 
             {
                 if (!success)

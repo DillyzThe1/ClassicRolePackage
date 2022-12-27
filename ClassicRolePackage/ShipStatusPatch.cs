@@ -28,7 +28,7 @@ namespace ClassicRolePackage
                 funnyflashh.layer = LayerMask.NameToLayer("UICollide");
                 funnyflashh.transform.position = Vector3.zero;
                 SpriteRenderer flashRend = funnyflashh.AddComponent<SpriteRenderer>();
-                flashRend.sprite = DillyzUtil.getSprite(System.Reflection.Assembly.GetExecutingAssembly(), "ClassicRolePackage.flash.png");
+                flashRend.sprite = DillyzUtil.getSprite(System.Reflection.Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.flash.png");
                 flashRend.color = new Color(1f, 1f, 1f, 0f);
                 funnyflash = funnyflashh.AddComponent<FlashOverlay>();
                 funnyflash.sprrend = flashRend;

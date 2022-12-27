@@ -51,7 +51,7 @@
     <Compile Include="ShipStatusPatch.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="sheriff_kill.png" />
+    <EmbeddedResource Include="Assets\sheriff_kill.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -478,27 +478,27 @@ start "Among Us" "%25AmongUsModDir%25/Among Us.exe"</PostBuildEvent>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="jester.png" />
+    <EmbeddedResource Include="Assets\jester.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="detective.png" />
+    <EmbeddedResource Include="Assets\detective.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="dillyzthe1.png" />
+    <EmbeddedResource Include="Assets\dillyzthe1.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="sheriff.png" />
+    <EmbeddedResource Include="Assets\sheriff.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="detective_search.png" />
+    <EmbeddedResource Include="Assets\detective_search.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="step.png" />
+    <EmbeddedResource Include="Assets\step.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="step_outline.png" />
+    <EmbeddedResource Include="Assets\step_outline.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="flash.png" />
+    <EmbeddedResource Include="Assets\flash.png" />
   </ItemGroup>
 </Project>
