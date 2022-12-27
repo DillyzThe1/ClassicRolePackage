@@ -2,6 +2,7 @@
 using BepInEx.IL2CPP;
 using DillyzRoleApi_Rewritten;
 using HarmonyLib;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -13,6 +14,9 @@ namespace CustomRolePackage
     {
         public const string MOD_NAME = "ClassicRolePackage", MOD_VERSION = "1.0.0", MOD_ID = "com.github.dillyzthe1.dillyzroleapi.packages.classic";
         public static Harmony harmony = new Harmony(HarmonyMain.MOD_ID);
+
+        public static float searchDuration = 15f;
+        public static bool anonSteps = false;
 
         public override void Load()
         {
@@ -69,6 +73,27 @@ namespace CustomRolePackage
                                                                     CustomRoleSide.Crewmate, VentPrivilege.None, false, true);
             detective.a_or_an = "a";
             detective.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.detective.png");
+
+            Log.LogInfo("Adding the Detectives's search button!");
+            CustomButton detectiveSearchButton = DillyzUtil.addButton(Assembly.GetExecutingAssembly(), "Search", "ClassicRolePackage.detective_search.png", 35f, false,
+                        new string[] { "Detective" }, new string[] { }, delegate(KillButtonCustomData button, bool success) 
+            {
+                if (!success)
+                    return;
+
+
+                DillyzUtil.RpcCommitAssassination(PlayerControl.LocalPlayer, PlayerControl.LocalPlayer);
+            });
+            detectiveSearchButton.textOutlineColor = detective.roleColor;
+            detective.AddAdvancedSetting_Boolean("Classic Mode", false, delegate (bool newvalue) {
+                detectiveSearchButton.allowedRoles.Clear();
+
+                if (!newvalue)
+                    detectiveSearchButton.allowedRoles.Add("Detective");
+            });
+            detective.AddAdvancedSetting_Int("Search Cooldown", 35, 5, 75, 5, delegate (int newvalue) { detectiveSearchButton.cooldown = newvalue; });
+            detective.AddAdvancedSetting_Int("Search Duration", 15, 5, 60, 5, delegate (int newvalue) { searchDuration = newvalue; });
+            detective.AddAdvancedSetting_Boolean("Anonymous Footsteps", false, delegate(bool newvalue) { anonSteps = newvalue; });
             #endregion
         }
     }
