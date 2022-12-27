@@ -47,6 +47,7 @@
     <Compile Include="PlayerControlPatch.cs" />
     <Compile Include="PlayerExilePatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShipStatusPatch.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="sheriff_kill.png" />
