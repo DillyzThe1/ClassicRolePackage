@@ -1,4 +1,5 @@
 ﻿using CustomRolePackage;
+using DillyzRoleApi_Rewritten;
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
@@ -29,8 +30,8 @@ namespace ClassicRolePackage
             foreach (PlayerControl player in PlayerControl.AllPlayerControls)
             {
                 Vector2 curpos = player.GetTruePosition();
-                if (player.inVent || (oldPos.ContainsKey(player.PlayerId) &&  InRangeOf(oldPos[player.PlayerId].x, curpos.x, 0.01f) 
-                                                                            && InRangeOf(oldPos[player.PlayerId].y, curpos.y, 0.01f)))
+                if (player.inVent || player.Data.IsDead || !(DillyzUtil.InGame() || DillyzUtil.InFreeplay()) ||
+                    (oldPos.ContainsKey(player.PlayerId) && InRangeOf(oldPos[player.PlayerId].x, curpos.x, 0.01f) && InRangeOf(oldPos[player.PlayerId].y, curpos.y, 0.01f)))
                     return;
 
                 GameObject newStep = new GameObject();

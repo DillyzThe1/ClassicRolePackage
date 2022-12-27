@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="FootstepBehaviour.cs" />
     <Compile Include="HarmonyMain.cs" />
+    <Compile Include="HudOverrideSystemTypePatch.cs" />
     <Compile Include="PlayerControlPatch.cs" />
     <Compile Include="PlayerExilePatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

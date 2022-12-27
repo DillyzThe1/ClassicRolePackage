@@ -31,7 +31,7 @@ namespace ClassicRolePackage
         }
 
         public void BeginFunnies(PlayerControl player) {
-            int colorid = HarmonyMain.anonSteps ? 15 : player.cosmetics.bodyMatProperties.ColorId;
+            int colorid = (HarmonyMain.anonSteps || HudOverrideSystemTypePatch.isActive) ? 15 : player.cosmetics.bodyMatProperties.ColorId;
 
             ogColor = Palette.PlayerColors[colorid] - new Color(0.1f, 0.1f, 0.1f, 0f);
             fadedColor = new Color(ogColor.r, ogColor.g, ogColor.b, 0f);
