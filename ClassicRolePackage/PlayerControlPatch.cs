@@ -29,7 +29,8 @@ namespace ClassicRolePackage
             foreach (PlayerControl player in PlayerControl.AllPlayerControls)
             {
                 Vector2 curpos = player.GetTruePosition();
-                if (player.inVent || (oldPos.ContainsKey(player.PlayerId) && oldPos[player.PlayerId].x == curpos.x && oldPos[player.PlayerId].y == curpos.y))
+                if (player.inVent || (oldPos.ContainsKey(player.PlayerId) &&  InRangeOf(oldPos[player.PlayerId].x, curpos.x, 0.01f) 
+                                                                            && InRangeOf(oldPos[player.PlayerId].y, curpos.y, 0.01f)))
                     return;
 
                 GameObject newStep = new GameObject();
@@ -40,6 +41,10 @@ namespace ClassicRolePackage
 
                 oldPos[player.PlayerId] = curpos;
             }
+        }
+
+        public static bool InRangeOf(float x, float y, float z) {
+            return (Math.Abs(Math.Abs(x) - Math.Abs(y)) < z);
         }
     }
 }
