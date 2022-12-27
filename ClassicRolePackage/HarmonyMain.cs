@@ -23,6 +23,9 @@ namespace CustomRolePackage
         public static bool anonSteps = false;
         public static float footDur = 15f;
         public static float footPulse = 0.5f;
+
+        public static AudioClip searchUpClip;
+        public static AudioClip searchDownClip;
         #endregion
 
         public static HarmonyMain Instance;
@@ -84,6 +87,10 @@ namespace CustomRolePackage
             detective.a_or_an = "a";
             detective.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.detective.png");
 
+            // sound
+           //// searchUpClip = DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_up.wav", "searchupdetective");
+            //searchDownClip = DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_down.wav", "searchdowndetective", 44100);
+
             Log.LogInfo("Adding the Detectives's search button!");
             detectiveSearchButton = DillyzUtil.addButton(Assembly.GetExecutingAssembly(), "Detective Search", "ClassicRolePackage.Assets.detective_search.png", 35f, 
                 false, new string[] { "Detective" }, new string[] { }, delegate(KillButtonCustomData button, bool success) 
@@ -95,14 +102,17 @@ namespace CustomRolePackage
                     return;
 
                 ShipStatusPatch.funnyflash.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(110f/255f, 150f/255f, 1f, 0.35f));
-                SoundManager.Instance.PlaySound(Minigame.Instance.OpenSound, false, 0.75f, null);
-                SoundManager.Instance.PlaySound(ShipStatus.Instance.SabotageSound, false, 0.75f, null);
+                SoundManager.Instance.PlaySound(Minigame.Instance.OpenSound, false, 1f, null);
+                SoundManager.Instance.PlaySound(ShipStatus.Instance.SabotageSound, false, 0.5f, null);
+
+                //SoundManager.Instance.PlaySound(DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_up.wav", "searchupdetective"), false, 0.75f, null);
             });
             detectiveSearchButton.buttonText = "Search";
             detectiveSearchButton.textOutlineColor = detective.roleColor;
             detectiveSearchButton.SetUseTimeButton(searchDuration, delegate (KillButtonCustomData button) {
                 ShipStatusPatch.funnyflash.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(1f, 1f, 1f, 0f));
-                SoundManager.Instance.PlaySound(Minigame.Instance.CloseSound, false, 0.75f, null);
+                SoundManager.Instance.PlaySound(Minigame.Instance.CloseSound, false, 1f, null);
+                //SoundManager.Instance.PlaySound(DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_down.wav", "searchdowndetective"), false, 0.75f, null);
             });
             detective.AddAdvancedSetting_Boolean("Classic Mode", false, delegate (bool b) {
                 detectiveSearchButton.allowedRoles.Clear();
