@@ -33,7 +33,7 @@ namespace ClassicRolePackage
         public void BeginFunnies(PlayerControl player) {
             int colorid = (HarmonyMain.anonSteps || HudOverrideSystemTypePatch.isActive) ? 15 : player.cosmetics.bodyMatProperties.ColorId;
 
-            ogColor = Palette.PlayerColors[colorid] - new Color(0.1f, 0.1f, 0.1f, 0f);
+            ogColor = Palette.PlayerColors[colorid] - new Color(0.1f, 0.1f, 0.1f, 0.65f);
             fadedColor = new Color(ogColor.r, ogColor.g, ogColor.b, 0f);
             sprrend = this.gameObject.AddComponent<SpriteRenderer>();
             sprrend.sprite = GetFootStepSprite();
@@ -41,7 +41,7 @@ namespace ClassicRolePackage
 
             outline = new GameObject();
             outline.name = this.name + "_outline";
-            ogColor_outline = Palette.ShadowColors[colorid] - new Color(0.35f, 0.35f, 0.35f, 0f);
+            ogColor_outline = Palette.ShadowColors[colorid] - new Color(0.35f, 0.35f, 0.35f, 0.65f);
             fadedColor_outline = new Color(ogColor_outline.r, ogColor_outline.g, ogColor_outline.b, 0f);
             sprrend_outline = outline.gameObject.AddComponent<SpriteRenderer>();
             sprrend_outline.sprite = GetFootStepOutlineSprite();
