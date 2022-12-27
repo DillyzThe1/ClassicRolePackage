@@ -478,4 +478,10 @@ start "Among Us" "%25AmongUsModDir%25/Among Us.exe"</PostBuildEvent>
   <ItemGroup>
     <EmbeddedResource Include="detective.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="dillyzthe1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="sheriff.png" />
+  </ItemGroup>
 </Project>

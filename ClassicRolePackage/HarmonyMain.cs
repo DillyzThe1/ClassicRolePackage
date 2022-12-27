@@ -32,7 +32,7 @@ namespace CustomRolePackage
             CustomRole sheriffRole = DillyzUtil.createRole("Sheriff", "Kill the impostor or suicide.", true, true, new Color32(255, 185, 30, 255), false,
                                                                     CustomRoleSide.Crewmate, VentPrivilege.None, false, true);
             sheriffRole.a_or_an = "a";
-            sheriffRole.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.sheriff_kill.png");
+            sheriffRole.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.sheriff.png");
 
             bool killoncrewkill = true;
 
