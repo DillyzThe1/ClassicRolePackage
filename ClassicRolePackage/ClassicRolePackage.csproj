@@ -502,7 +502,7 @@ start "Among Us" "%25AmongUsModDir%25/Among Us.exe"</PostBuildEvent>
     <EmbeddedResource Include="Assets\flash.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\search_down.wav" />
-    <EmbeddedResource Include="Assets\search_up.wav" />
+    <None Include="Assets\search_down.wav" />
+    <None Include="Assets\search_up.wav" />
   </ItemGroup>
 </Project>
