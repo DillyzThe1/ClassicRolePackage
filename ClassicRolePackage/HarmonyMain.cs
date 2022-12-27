@@ -15,10 +15,14 @@ namespace CustomRolePackage
         public const string MOD_NAME = "ClassicRolePackage", MOD_VERSION = "1.0.0", MOD_ID = "com.github.dillyzthe1.dillyzroleapi.packages.classic";
         public static Harmony harmony = new Harmony(HarmonyMain.MOD_ID);
 
-        public static float searchDuration = 15f;
+        #region detective stuff
+        public static CustomButton detectiveSearchButton;
+        public static bool classicMode = false;
+        public static float searchDuration = 25f;
         public static bool anonSteps = false;
-        public static float footDir = 15f;
+        public static float footDur = 15f;
         public static float footPulse = 0.5f;
+        #endregion
 
         public static HarmonyMain Instance;
 
@@ -80,26 +84,27 @@ namespace CustomRolePackage
             detective.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.detective.png");
 
             Log.LogInfo("Adding the Detectives's search button!");
-            CustomButton detectiveSearchButton = DillyzUtil.addButton(Assembly.GetExecutingAssembly(), "Search", "ClassicRolePackage.detective_search.png", 35f, false,
-                        new string[] { "Detective" }, new string[] { }, delegate(KillButtonCustomData button, bool success) 
+            detectiveSearchButton = DillyzUtil.addButton(Assembly.GetExecutingAssembly(), "Detective Search", "ClassicRolePackage.detective_search.png", 35f, 
+                false, new string[] { "Detective" }, new string[] { }, delegate(KillButtonCustomData button, bool success) 
             {
                 if (!success)
                     return;
-
-
-                DillyzUtil.RpcCommitAssassination(PlayerControl.LocalPlayer, PlayerControl.LocalPlayer);
             });
+            detectiveSearchButton.buttonText = "Search";
             detectiveSearchButton.textOutlineColor = detective.roleColor;
-            detective.AddAdvancedSetting_Boolean("Classic Mode", false, delegate (bool newvalue) {
+            detectiveSearchButton.SetUseTimeButton(searchDuration, null);// delegate (KillButtonCustomData button) { });
+            detective.AddAdvancedSetting_Boolean("Classic Mode", false, delegate (bool b) {
                 detectiveSearchButton.allowedRoles.Clear();
 
-                if (!newvalue)
+                classicMode = b;
+
+                if (!b)
                     detectiveSearchButton.allowedRoles.Add("Detective");
             });
-            detective.AddAdvancedSetting_Int("Search Cooldown", 35, 5, 75, 5, delegate (int newvalue) { detectiveSearchButton.cooldown = newvalue; });
-            detective.AddAdvancedSetting_Int("Search Duration", 15, 5, 60, 5, delegate (int newvalue) { searchDuration = newvalue; });
-            detective.AddAdvancedSetting_Boolean("Anonymous Footsteps", false, delegate(bool newvalue) { anonSteps = newvalue; });
-            detective.AddAdvancedSetting_Int("Footstep Duration", 15, 1, 30, 1, delegate (int newvalue) { footDir = newvalue; });
+            detective.AddAdvancedSetting_Int("Search Cooldown", 35, 5, 75, 5, delegate (int t) { detectiveSearchButton.cooldown = t; });
+            detective.AddAdvancedSetting_Int("Search Duration", 25, 5, 60, 5, delegate (int t) { searchDuration = t; detectiveSearchButton.useTime = t; });
+            detective.AddAdvancedSetting_Boolean("Anonymous Footsteps", false, delegate(bool v) { anonSteps = v; });
+            detective.AddAdvancedSetting_Int("Footstep Duration", 15, 1, 30, 1, delegate (int t) { footDur = t; });
             #endregion
         }
     }

@@ -63,10 +63,10 @@ namespace ClassicRolePackage
         }
 
         IEnumerator FadeOut() {
-            for (float t = 0f; t < HarmonyMain.footDir; t += Time.deltaTime)
+            for (float t = 0f; t < HarmonyMain.footDur; t += Time.deltaTime)
             {
-                sprrend.color = Color.Lerp(ogColor, fadedColor, t / HarmonyMain.footDir);
-                sprrend_outline.color = Color.Lerp(ogColor_outline, fadedColor_outline, t / HarmonyMain.footDir);
+                sprrend.color = Color.Lerp(ogColor, fadedColor, t / HarmonyMain.footDur);
+                sprrend_outline.color = Color.Lerp(ogColor_outline, fadedColor_outline, t / HarmonyMain.footDur);
                 yield return null;
             }
             AllFootsteps.Remove(this);

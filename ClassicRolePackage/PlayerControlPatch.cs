@@ -19,13 +19,13 @@ namespace ClassicRolePackage
             public static Dictionary<byte, Vector2> oldPos = new Dictionary<byte, Vector2>();
             public static void Postfix(PlayerControl __instance)
             {
-                if (!(DillyzUtil.InGame() || DillyzUtil.InFreeplay()) || __instance != PlayerControl.LocalPlayer)
+                if (!(DillyzUtil.InGame() || DillyzUtil.InFreeplay()) || __instance != PlayerControl.LocalPlayer || HarmonyMain.detectiveSearchButton.GameInstance == null)
                     return;
 
                 string rolename = DillyzUtil.getRoleName(PlayerControl.LocalPlayer);
 
                 foreach (FootstepBehaviour footstep in FootstepBehaviour.AllFootsteps)
-                    footstep.Renderer.enabled = footstep.OutlineRenderer.enabled = (rolename == "Detective");
+                    footstep.Renderer.enabled = footstep.OutlineRenderer.enabled = (rolename == "Detective" && (HarmonyMain.classicMode || HarmonyMain.detectiveSearchButton.GameInstance.useTimerMode));
 
                 if (rolename != "Detective")
                     return;
