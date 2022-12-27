@@ -95,11 +95,14 @@ namespace CustomRolePackage
                     return;
 
                 ShipStatusPatch.funnyflash.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(110f/255f, 150f/255f, 1f, 0.35f));
+                SoundManager.Instance.PlaySound(Minigame.Instance.OpenSound, false, 0.75f, null);
+                SoundManager.Instance.PlaySound(ShipStatus.Instance.SabotageSound, false, 0.75f, null);
             });
             detectiveSearchButton.buttonText = "Search";
             detectiveSearchButton.textOutlineColor = detective.roleColor;
             detectiveSearchButton.SetUseTimeButton(searchDuration, delegate (KillButtonCustomData button) {
                 ShipStatusPatch.funnyflash.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(1f, 1f, 1f, 0f));
+                SoundManager.Instance.PlaySound(Minigame.Instance.CloseSound, false, 0.75f, null);
             });
             detective.AddAdvancedSetting_Boolean("Classic Mode", false, delegate (bool b) {
                 detectiveSearchButton.allowedRoles.Clear();
