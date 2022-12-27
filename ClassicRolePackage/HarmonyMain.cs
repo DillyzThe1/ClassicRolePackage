@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.IL2CPP;
+using ClassicRolePackage;
 using DillyzRoleApi_Rewritten;
 using HarmonyLib;
 using System.Linq;
@@ -89,10 +90,17 @@ namespace CustomRolePackage
             {
                 if (!success)
                     return;
+
+                if (ShipStatusPatch.funnyflash == null)
+                    return;
+
+                ShipStatusPatch.funnyflash.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(110f/255f, 150f/255f, 1f, 0.35f));
             });
             detectiveSearchButton.buttonText = "Search";
             detectiveSearchButton.textOutlineColor = detective.roleColor;
-            detectiveSearchButton.SetUseTimeButton(searchDuration, null);// delegate (KillButtonCustomData button) { });
+            detectiveSearchButton.SetUseTimeButton(searchDuration, delegate (KillButtonCustomData button) {
+                ShipStatusPatch.funnyflash.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(1f, 1f, 1f, 0f));
+            });
             detective.AddAdvancedSetting_Boolean("Classic Mode", false, delegate (bool b) {
                 detectiveSearchButton.allowedRoles.Clear();
 

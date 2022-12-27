@@ -11,8 +11,7 @@ namespace ClassicRolePackage
 {
     class ShipStatusPatch
     {
-        public static GameObject funnyflash;
-        public static SpriteRenderer flashRend;
+        public static FlashOverlay funnyflash;
         public static GameObject doormat;
         [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.OnEnable))]
         class ShipStatusPatch_OnEnable
@@ -23,14 +22,16 @@ namespace ClassicRolePackage
                 doormat.transform.parent = __instance.transform;
                 doormat.transform.position = Vector3.zero;
 
-                funnyflash = new GameObject();
-                funnyflash.transform.parent = HudManager.Instance.transform;
-                funnyflash.name = "doormat";
-                funnyflash.layer = LayerMask.NameToLayer("UICollide");
-                funnyflash.transform.position = Vector3.zero;
-                flashRend = funnyflash.AddComponent<SpriteRenderer>();
+                GameObject funnyflashh = new GameObject();
+                funnyflashh.transform.parent = HudManager.Instance.transform;
+                funnyflashh.name = "doormat";
+                funnyflashh.layer = LayerMask.NameToLayer("UICollide");
+                funnyflashh.transform.position = Vector3.zero;
+                SpriteRenderer flashRend = funnyflashh.AddComponent<SpriteRenderer>();
                 flashRend.sprite = DillyzUtil.getSprite(System.Reflection.Assembly.GetExecutingAssembly(), "ClassicRolePackage.flash.png");
-                flashRend.color = new Color(1f, 1f, 1f, 0.5f);
+                flashRend.color = new Color(1f, 1f, 1f, 0f);
+                funnyflash = funnyflashh.AddComponent<FlashOverlay>();
+                funnyflash.sprrend = flashRend;
             }
         }
         [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.OnDestroy))]
