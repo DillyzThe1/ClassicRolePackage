@@ -8,11 +8,10 @@ using UnityEngine;
 
 namespace ClassicRolePackage
 {
-    [HarmonyPatch(nameof(ShipStatus))]
     class ShipStatusPatch
     {
         public static GameObject doormat;
-        [HarmonyPatch(nameof(ShipStatus.OnEnable))]
+        [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.OnEnable))]
         class ShipStatusPatch_OnEnable
         {
             public static void Postfix(ShipStatus __instance) {
@@ -22,7 +21,7 @@ namespace ClassicRolePackage
                 doormat.transform.position = Vector3.zero;
             }
         }
-        [HarmonyPatch(nameof(ShipStatus.OnDestroy))]
+        [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.OnDestroy))]
         class ShipStatusPatch_OnDestroy
         {
             public static void Prefix(ShipStatus __instance)
