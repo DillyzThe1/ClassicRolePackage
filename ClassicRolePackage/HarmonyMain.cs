@@ -17,9 +17,14 @@ namespace CustomRolePackage
 
         public static float searchDuration = 15f;
         public static bool anonSteps = false;
+        public static float footDir = 15f;
+        public static float footPulse = 0.5f;
+
+        public static HarmonyMain Instance;
 
         public override void Load()
         {
+            Instance = this;
             Log.LogInfo(HarmonyMain.MOD_NAME + " v" + HarmonyMain.MOD_VERSION + " loaded. Hooray!");
             harmony.PatchAll();
 
@@ -94,6 +99,7 @@ namespace CustomRolePackage
             detective.AddAdvancedSetting_Int("Search Cooldown", 35, 5, 75, 5, delegate (int newvalue) { detectiveSearchButton.cooldown = newvalue; });
             detective.AddAdvancedSetting_Int("Search Duration", 15, 5, 60, 5, delegate (int newvalue) { searchDuration = newvalue; });
             detective.AddAdvancedSetting_Boolean("Anonymous Footsteps", false, delegate(bool newvalue) { anonSteps = newvalue; });
+            detective.AddAdvancedSetting_Int("Footstep Duration", 15, 1, 30, 1, delegate (int newvalue) { footDir = newvalue; });
             #endregion
         }
     }

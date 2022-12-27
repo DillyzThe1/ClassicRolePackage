@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FootstepBehaviour.cs" />
     <Compile Include="HarmonyMain.cs" />
+    <Compile Include="PlayerControlPatch.cs" />
     <Compile Include="PlayerExilePatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -486,5 +488,8 @@ start "Among Us" "%25AmongUsModDir%25/Among Us.exe"</PostBuildEvent>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="detective_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="step.png" />
   </ItemGroup>
 </Project>
