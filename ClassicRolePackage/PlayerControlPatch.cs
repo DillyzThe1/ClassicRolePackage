@@ -43,11 +43,11 @@ namespace ClassicRolePackage
                     Vector2 curpos = player.GetTruePosition();
                     if (player.inVent || player.Data.IsDead ||
                         (oldPos.ContainsKey(player.PlayerId) && InRangeOf(oldPos[player.PlayerId].x, curpos.x, 0.01f) && InRangeOf(oldPos[player.PlayerId].y, curpos.y, 0.01f)))
-                        return;
+                        continue;
 
                     GameObject newStep = new GameObject();
                     newStep.layer = player.gameObject.layer;// - 1;
-                    newStep.name = "footstep_" + newStep.name + "_" + lastTrace.ToString();
+                    newStep.name = "footstep_" + player.name + "_" + lastTrace.ToString();
                     FootstepBehaviour footstep = newStep.AddComponent<FootstepBehaviour>();
                     footstep.BeginFunnies(player);
 

@@ -3,6 +3,7 @@ using BepInEx.IL2CPP;
 using ClassicRolePackage;
 using DillyzRoleApi_Rewritten;
 using HarmonyLib;
+using System;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
@@ -102,8 +103,14 @@ namespace CustomRolePackage
                     return;
 
                 ShipStatusPatch.funnyflash.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(110f/255f, 150f/255f, 1f, 0.35f));
-                SoundManager.Instance.PlaySound(Minigame.Instance.OpenSound, false, 1f, null);
-                SoundManager.Instance.PlaySound(ShipStatus.Instance.SabotageSound, false, 0.5f, null);
+                try
+                {
+                    SoundManager.Instance.PlaySound(Minigame.Instance.OpenSound, false, 1f, null);
+                    SoundManager.Instance.PlaySound(ShipStatus.Instance.SabotageSound, false, 0.5f, null);
+                }
+                catch (Exception e) {
+                    HarmonyMain.Instance.Log.LogInfo("goober sounds failed " + e.Message + "\n" + e.StackTrace);
+                }
 
                 //SoundManager.Instance.PlaySound(DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_up.wav", "searchupdetective"), false, 0.75f, null);
             });
@@ -111,7 +118,14 @@ namespace CustomRolePackage
             detectiveSearchButton.textOutlineColor = detective.roleColor;
             detectiveSearchButton.SetUseTimeButton(searchDuration, delegate (KillButtonCustomData button) {
                 ShipStatusPatch.funnyflash.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(1f, 1f, 1f, 0f));
-                SoundManager.Instance.PlaySound(Minigame.Instance.CloseSound, false, 1f, null);
+                try
+                {
+                    SoundManager.Instance.PlaySound(Minigame.Instance.CloseSound, false, 1f, null);
+                }
+                catch (Exception e)
+                {
+                    HarmonyMain.Instance.Log.LogInfo("goober sound failed " + e.Message + "\n" + e.StackTrace);
+                }
                 //SoundManager.Instance.PlaySound(DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_down.wav", "searchdowndetective"), false, 0.75f, null);
             });
             detective.AddAdvancedSetting_Boolean("Classic Mode", false, delegate (bool b) {
