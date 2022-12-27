@@ -39,7 +39,13 @@ namespace ClassicRolePackage
         {
             public static void Prefix(ShipStatus __instance)
             {
+                foreach (FootstepBehaviour footstep in FootstepBehaviour.AllFootsteps)
+                    GameObject.Destroy(footstep);
+                FootstepBehaviour.AllFootsteps.Clear();
+
                 GameObject.Destroy(doormat);
+                GameObject.Destroy(funnyflash);
+                funnyflash = null;
             }
         }
     }
