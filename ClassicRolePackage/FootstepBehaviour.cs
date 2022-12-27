@@ -21,6 +21,9 @@ namespace ClassicRolePackage
         GameObject outline;
         SpriteRenderer sprrend_outline;
 
+        public SpriteRenderer Renderer => sprrend;
+        public SpriteRenderer OutlineRenderer => sprrend_outline;
+
         Color ogColor;
         Color fadedColor;
 

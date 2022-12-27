@@ -19,10 +19,15 @@ namespace ClassicRolePackage
             public static Dictionary<byte, Vector2> oldPos = new Dictionary<byte, Vector2>();
             public static void Postfix(PlayerControl __instance)
             {
-                if (__instance != PlayerControl.LocalPlayer)
+                if (!(DillyzUtil.InGame() || DillyzUtil.InFreeplay()) || __instance != PlayerControl.LocalPlayer)
                     return;
 
-                if (DillyzUtil.getRoleName(PlayerControl.LocalPlayer) != "Detective")
+                string rolename = DillyzUtil.getRoleName(PlayerControl.LocalPlayer);
+
+                foreach (FootstepBehaviour footstep in FootstepBehaviour.AllFootsteps)
+                    footstep.Renderer.enabled = footstep.OutlineRenderer.enabled = (rolename == "Detective");
+
+                if (rolename != "Detective")
                     return;
 
                 TimeSpan timeLeft = DateTime.UtcNow - lastTrace;
@@ -36,7 +41,7 @@ namespace ClassicRolePackage
                 foreach (PlayerControl player in PlayerControl.AllPlayerControls)
                 {
                     Vector2 curpos = player.GetTruePosition();
-                    if (player.inVent || player.Data.IsDead || !(DillyzUtil.InGame() || DillyzUtil.InFreeplay()) ||
+                    if (player.inVent || player.Data.IsDead ||
                         (oldPos.ContainsKey(player.PlayerId) && InRangeOf(oldPos[player.PlayerId].x, curpos.x, 0.01f) && InRangeOf(oldPos[player.PlayerId].y, curpos.y, 0.01f)))
                         return;
 
