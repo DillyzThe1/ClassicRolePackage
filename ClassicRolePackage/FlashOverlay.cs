@@ -40,7 +40,9 @@ namespace ClassicRolePackage
             {
                 if (a != b)
                     yield return null;
-                sprrend.color = Color.Lerp(ogColor, targetColor, t / time);
+                float timeProgress = t / time;
+                float curEase = 1f + ((timeProgress - 0.5f)/4f);
+                sprrend.color = Color.Lerp(ogColor, targetColor, timeProgress * curEase);
                 yield return null;
             }
             yield break;
