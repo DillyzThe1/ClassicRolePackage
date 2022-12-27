@@ -16,7 +16,7 @@ namespace ClassicRolePackage
         public static DateTime lastTrace = DateTime.MinValue;
         public static Dictionary<byte, Vector2> oldPos = new Dictionary<byte, Vector2>();
         public static void Postfix(PlayerControl __instance) {
-            if (__instance != PlayerControl.LocalPlayer)
+            if (__instance != PlayerControl.LocalPlayer || DillyzUtil.getRoleName(PlayerControl.LocalPlayer) != "Detective")
                 return;
 
             TimeSpan timeLeft = DateTime.UtcNow - lastTrace;
