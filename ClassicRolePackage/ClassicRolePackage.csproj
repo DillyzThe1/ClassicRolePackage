@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DillyzUtilPatch.cs" />
     <Compile Include="FlashOverlay.cs" />
     <Compile Include="FootstepBehaviour.cs" />
     <Compile Include="HarmonyMain.cs" />

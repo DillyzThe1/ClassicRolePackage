@@ -116,8 +116,14 @@ namespace CustomRolePackage
             });
             detectiveSearchButton.buttonText = "Search";
             detectiveSearchButton.textOutlineColor = detective.roleColor;
-            detectiveSearchButton.SetUseTimeButton(searchDuration, delegate (KillButtonCustomData button) {
-                ShipStatusPatch.funnyflash.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(1f, 1f, 1f, 0f));
+            detectiveSearchButton.SetUseTimeButton(searchDuration, delegate (KillButtonCustomData button, bool interrupted) {
+
+                if (interrupted) {
+                    ShipStatusPatch.funnyflash?.FadeToColor(1f, new Color(1f, 1f, 1f, 0f));
+                    return;
+                }
+
+                ShipStatusPatch.funnyflash?.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(1f, 1f, 1f, 0f));
                 try
                 {
                     SoundManager.Instance.PlaySound(Minigame.Instance.CloseSound, false, 1f, null);
