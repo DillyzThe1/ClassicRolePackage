@@ -26,12 +26,30 @@ namespace ClassicRolePackage
                 funnyflashh.transform.parent = HudManager.Instance.transform;
                 funnyflashh.name = "doormat";
                 funnyflashh.layer = LayerMask.NameToLayer("UICollide");
-                funnyflashh.transform.position = new Vector3(0f, 0.25f, 100f);
+                funnyflashh.transform.position = new Vector3(0f, 0.25f, 250f);
                 SpriteRenderer flashRend = funnyflashh.AddComponent<SpriteRenderer>();
                 flashRend.sprite = DillyzUtil.getSprite(System.Reflection.Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.flash.png");
                 flashRend.color = new Color(1f, 1f, 1f, 0f);
                 funnyflash = funnyflashh.AddComponent<FlashOverlay>();
                 funnyflash.sprrend = flashRend;
+            }
+        }
+
+        [HarmonyPatch(typeof(PolusShipStatus), nameof(PolusShipStatus.OnEnable))]
+        class PolusShipStatusPatch_OnEnable
+        {
+            public static void Postfix(PolusShipStatus __instance)
+            {
+                ShipStatusPatch_OnEnable.Postfix(__instance);
+            }
+        }
+
+        [HarmonyPatch(typeof(AirshipStatus), nameof(AirshipStatus.OnEnable))]
+        class AirshipStatusPatch_OnEnable
+        {
+            public static void Postfix(AirshipStatus __instance)
+            {
+                ShipStatusPatch_OnEnable.Postfix(__instance);
             }
         }
         [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.OnDestroy))]
