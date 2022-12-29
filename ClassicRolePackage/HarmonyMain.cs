@@ -142,10 +142,10 @@ namespace CustomRolePackage
                 if (!b)
                     detectiveSearchButton.allowedRoles.Add("Detective");
             });
-            detective.AddAdvancedSetting_Int("Search Cooldown", 35, 5, 75, 5, delegate (int t) { detectiveSearchButton.cooldown = t; });
-            detective.AddAdvancedSetting_Int("Search Duration", 25, 5, 60, 5, delegate (int t) { searchDuration = t; detectiveSearchButton.useTime = t; });
+            detective.AddAdvancedSetting_Int("Search Cooldown", 35, 5, 75, 5, delegate (float t) { detectiveSearchButton.cooldown = t; });
+            detective.AddAdvancedSetting_Int("Search Duration", 25, 5, 60, 5, delegate (float t) { searchDuration = t; detectiveSearchButton.useTime = t; });
             detective.AddAdvancedSetting_Boolean("Anonymous Footsteps", false, delegate(bool v) { anonSteps = v; });
-            detective.AddAdvancedSetting_Int("Footstep Duration", 15, 1, 30, 1, delegate (int t) { footDur = t; });
+            detective.AddAdvancedSetting_Int("Footstep Duration", 15, 1, 30, 1, delegate (float t) { footDur = t; });
             #endregion
         }
     }
