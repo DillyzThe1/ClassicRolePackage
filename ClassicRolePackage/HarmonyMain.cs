@@ -23,7 +23,7 @@ namespace CustomRolePackage
         public static float searchDuration = 25f;
         public static bool anonSteps = false;
         public static float footDur = 15f;
-        public static float footPulse = 0.5f;
+        public static float footPulse = 0.25f;
 
         public static AudioClip searchUpClip;
         public static AudioClip searchDownClip;
@@ -105,11 +105,13 @@ namespace CustomRolePackage
                 ShipStatusPatch.funnyflash.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(110f/255f, 150f/255f, 1f, 0.35f));
                 try
                 {
-                    SoundManager.Instance.PlaySound(Minigame.Instance.OpenSound, false, 1f, null);
-                    SoundManager.Instance.PlaySound(ShipStatus.Instance.SabotageSound, false, 0.5f, null);
+                    if (SoundManager.Instance != null && Minigame.Instance != null)
+                        SoundManager.Instance.PlaySound(Minigame.Instance.OpenSound, false, 1f, null);
+                    if (SoundManager.Instance != null && ShipStatus.Instance != null)
+                        SoundManager.Instance.PlaySound(ShipStatus.Instance.SabotageSound, false, 0.5f, null);
                 }
                 catch (Exception e) {
-                    HarmonyMain.Instance.Log.LogInfo("goober sounds failed " + e.Message + "\n" + e.StackTrace);
+                    HarmonyMain.Instance.Log.LogError("goober sounds failed " + e.Message + "\n" + e.StackTrace);
                 }
 
                 //SoundManager.Instance.PlaySound(DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_up.wav", "searchupdetective"), false, 0.75f, null);
@@ -126,11 +128,12 @@ namespace CustomRolePackage
                 ShipStatusPatch.funnyflash?.FadeToColor(1f, new Color(1f, 1f, 1f, 0.95f), new Color(1f, 1f, 1f, 0f));
                 try
                 {
-                    SoundManager.Instance.PlaySound(Minigame.Instance.CloseSound, false, 1f, null);
+                    if (SoundManager.Instance != null && Minigame.Instance != null)
+                        SoundManager.Instance.PlaySound(Minigame.Instance.CloseSound, false, 1f, null);
                 }
                 catch (Exception e)
                 {
-                    HarmonyMain.Instance.Log.LogInfo("goober sound failed " + e.Message + "\n" + e.StackTrace);
+                    HarmonyMain.Instance.Log.LogError("goober sound failed " + e.Message + "\n" + e.StackTrace);
                 }
                 //SoundManager.Instance.PlaySound(DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_down.wav", "searchdowndetective"), false, 0.75f, null);
             });

@@ -19,13 +19,21 @@ namespace ClassicRolePackage
             public static Dictionary<byte, Vector2> oldPos = new Dictionary<byte, Vector2>();
             public static void Postfix(PlayerControl __instance)
             {
-                if (!(DillyzUtil.InGame() || DillyzUtil.InFreeplay()) || __instance != PlayerControl.LocalPlayer || HarmonyMain.detectiveSearchButton.GameInstance == null)
+                if (!(DillyzUtil.InGame() || DillyzUtil.InFreeplay()) || __instance.PlayerId != PlayerControl.LocalPlayer.PlayerId || HarmonyMain.detectiveSearchButton.GameInstance == null)
                     return;
 
                 string rolename = DillyzUtil.getRoleName(PlayerControl.LocalPlayer);
 
-                foreach (FootstepBehaviour footstep in FootstepBehaviour.AllFootsteps)
-                    footstep.Renderer.enabled = footstep.OutlineRenderer.enabled = (rolename == "Detective" && (HarmonyMain.classicMode || HarmonyMain.detectiveSearchButton.GameInstance.useTimerMode));
+                foreach (FootstepBehaviour footstep in FootstepBehaviour.AllFootsteps) {
+                    bool epicfail = (rolename == "Detective" && (HarmonyMain.classicMode || HarmonyMain.detectiveSearchButton.GameInstance.useTimerMode));
+                    if (footstep != null)
+                    {
+                        if (footstep.Renderer != null)
+                            footstep.Renderer.enabled = epicfail;
+                        if (footstep.OutlineRenderer != null)
+                            footstep.OutlineRenderer.enabled = epicfail;
+                    }
+                }
 
                 if (rolename != "Detective")
                     return;
@@ -48,6 +56,8 @@ namespace ClassicRolePackage
                     GameObject newStep = new GameObject();
                     newStep.layer = player.gameObject.layer;// - 1;
                     newStep.name = "footstep_" + player.name + "_" + lastTrace.ToString();
+                    if (ShipStatusPatch.doormat != null)
+                        newStep.transform.parent = ShipStatusPatch.doormat.transform;
                     FootstepBehaviour footstep = newStep.AddComponent<FootstepBehaviour>();
                     footstep.BeginFunnies(player);
 

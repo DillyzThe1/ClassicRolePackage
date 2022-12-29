@@ -26,7 +26,7 @@ namespace ClassicRolePackage
                 funnyflashh.transform.parent = HudManager.Instance.transform;
                 funnyflashh.name = "doormat";
                 funnyflashh.layer = LayerMask.NameToLayer("UICollide");
-                funnyflashh.transform.position = new Vector3(0f, 0.25f, 0f);
+                funnyflashh.transform.position = new Vector3(0f, 0.25f, 100f);
                 SpriteRenderer flashRend = funnyflashh.AddComponent<SpriteRenderer>();
                 flashRend.sprite = DillyzUtil.getSprite(System.Reflection.Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.flash.png");
                 flashRend.color = new Color(1f, 1f, 1f, 0f);

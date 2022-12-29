@@ -55,6 +55,9 @@ namespace ClassicRolePackage
             sprrend_outline.sprite = GetFootStepOutlineSprite();
             sprrend_outline.color = ogColor_outline;
 
+            sprrend.enabled = false;
+            sprrend_outline.enabled = false;
+
             outline.transform.position = this.transform.position = player.transform.position - new Vector3(0f, 0.25f, 0f);
             this.transform.position += new Vector3(0f, 0f, 1f);
             AllFootsteps.Add(this);
