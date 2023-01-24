@@ -1,14 +1,7 @@
 ﻿using BepInEx.IL2CPP.Utils;
-using CustomRolePackage;
 using DillyzRoleApi_Rewritten;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace ClassicRolePackage
 {
@@ -31,6 +24,11 @@ namespace ClassicRolePackage
             ogColor = from;
             targetColor = to;
             MonoBehaviourExtensions.StartCoroutine(this, FadeOut(time));
+        }
+
+        public void SetStaticColor(Color c) {
+            a++;
+            ogColor = targetColor = sprrend.color = c;
         }
 
         IEnumerator FadeOut(float time)
