@@ -59,7 +59,7 @@ namespace CustomRolePackage
             new string[] { "Sheriff" }, new string[] { }, delegate (KillButtonCustomData button, bool success)
             {
                 if (!success)
-                    return;
+                    return;                                                                                                                    
 
                 Log.LogInfo(button.killButton.currentTarget.name + " was targetted by " + PlayerControl.LocalPlayer.name + "!");
 

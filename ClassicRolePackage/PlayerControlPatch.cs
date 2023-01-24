@@ -26,13 +26,8 @@ namespace ClassicRolePackage
 
                 foreach (FootstepBehaviour footstep in FootstepBehaviour.AllFootsteps) {
                     bool epicfail = (rolename == "Detective" && (HarmonyMain.classicMode || HarmonyMain.detectiveSearchButton.GameInstance.useTimerMode));
-                    if (footstep != null)
-                    {
-                        if (footstep.Renderer != null)
-                            footstep.Renderer.enabled = epicfail;
-                        if (footstep.OutlineRenderer != null)
-                            footstep.OutlineRenderer.enabled = epicfail;
-                    }
+                    if (footstep != null && footstep.Renderer != null)
+                        footstep.Renderer.enabled = epicfail;
                 }
 
                 if (rolename != "Detective")

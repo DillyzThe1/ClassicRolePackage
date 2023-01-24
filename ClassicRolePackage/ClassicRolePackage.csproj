@@ -496,9 +496,6 @@ start "Among Us" "%25AmongUsModDir%25/Among Us.exe"</PostBuildEvent>
     <EmbeddedResource Include="Assets\step.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\step_outline.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Assets\flash.png" />
   </ItemGroup>
   <ItemGroup>
