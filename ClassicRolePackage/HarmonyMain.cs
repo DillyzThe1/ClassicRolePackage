@@ -47,7 +47,7 @@ namespace CustomRolePackage
 
             #region sheriff
             Log.LogInfo("Adding a Sheriff!");
-            CustomRole sheriffRole = DillyzUtil.createRole("Sheriff", "Kill the impostor or suicide.", true, true, new Color32(255, 185, 30, 255), false,
+            CustomRole sheriffRole = DillyzUtil.createRole("Sheriff", "Kill the impostor or suicide.", true, false, new Color32(255, 185, 30, 255), false,
                                                                     CustomRoleSide.Crewmate, VentPrivilege.None, false, true);
             sheriffRole.a_or_an = "a";
             sheriffRole.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.sheriff.png");
@@ -73,6 +73,9 @@ namespace CustomRolePackage
             sheriffButton.buttonText = "Kill";
             sheriffButton.textOutlineColor = new Color32(255, 185, 30, 255);
 
+            sheriffRole.AddAdvancedSetting_Boolean("Known Publicly", false, delegate (bool newvalue) {
+                sheriffRole.nameColorPublic = newvalue;
+            });
             sheriffRole.AddAdvancedSetting_Boolean("Punished", true, delegate (bool newvalue) {
                 killoncrewkill = newvalue;
             });
