@@ -1,16 +1,10 @@
 ﻿using DillyzRoleApi_Rewritten;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using BepInEx.IL2CPP.Utils;
 using CustomRolePackage;
-using UnityEngine.UI;
-using Il2CppSystem;
 
 namespace ClassicRolePackage
 {
@@ -42,7 +36,6 @@ namespace ClassicRolePackage
             sprrend.color = ogColor;
 
             sprrend.material = new Material(Shader.Find("Unlit/PlayerShader"));
-            //player.SetPlayerMaterialColors(sprrend);
             sprrend.material.SetColor(PlayerMaterial.BackColor, Palette.ShadowColors[colorid]);
             sprrend.material.SetColor(PlayerMaterial.BodyColor, Palette.PlayerColors[colorid]);
             sprrend.material.SetColor(PlayerMaterial.VisorColor, Palette.VisorColor);

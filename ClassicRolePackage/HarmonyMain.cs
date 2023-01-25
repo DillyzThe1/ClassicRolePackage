@@ -93,10 +93,6 @@ namespace CustomRolePackage
             detective.blurb = "The Detective is a role in which is able to follow previous footsteps back a set amount of time, caching those of whom are guilty in their path. The catch is that they can only do this with searching ON.\n\ngithub.com/DillyzThe1";
             detective.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.detective.png");
 
-            // sound
-           //// searchUpClip = DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_up.wav", "searchupdetective");
-            //searchDownClip = DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_down.wav", "searchdowndetective", 44100);
-
             Log.LogInfo("Adding the Detectives's search button!");
             detectiveSearchButton = DillyzUtil.addButton(Assembly.GetExecutingAssembly(), "Detective Search", "ClassicRolePackage.Assets.detective_search.png", 35f, 
                 false, new string[] { "Detective" }, new string[] { }, delegate(KillButtonCustomData button, bool success) 
@@ -118,8 +114,6 @@ namespace CustomRolePackage
                 catch (Exception e) {
                     HarmonyMain.Instance.Log.LogError("goober sounds failed " + e.Message + "\n" + e.StackTrace);
                 }
-
-                //SoundManager.Instance.PlaySound(DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_up.wav", "searchupdetective"), false, 0.75f, null);
             });
             detectiveSearchButton.buttonText = "Search";
             detectiveSearchButton.textOutlineColor = detective.roleColor;
@@ -140,7 +134,6 @@ namespace CustomRolePackage
                 {
                     HarmonyMain.Instance.Log.LogError("goober sound failed " + e.Message + "\n" + e.StackTrace);
                 }
-                //SoundManager.Instance.PlaySound(DillyzUtil.getSound(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.search_down.wav", "searchdowndetective"), false, 0.75f, null);
             });
             detective.AddAdvancedSetting_Boolean("Classic Mode", false, delegate (bool b) {
                 detectiveSearchButton.allowedRoles.Clear();
