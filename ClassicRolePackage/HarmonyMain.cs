@@ -4,7 +4,6 @@ using ClassicRolePackage;
 using DillyzRoleApi_Rewritten;
 using HarmonyLib;
 using System;
-using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -42,14 +41,16 @@ namespace CustomRolePackage
             CustomRole jester = DillyzUtil.createRole("Jester", "Get voted out to win.", true, false, new Color32(90, 50, 200, 255), false,
                                                                     CustomRoleSide.LoneWolf, VentPrivilege.None, false, true);
             jester.a_or_an = "a";
+            jester.blurb = "The Jester is a role with a simple mission, that being to get voted out. They work with no team and are an independent force of their own.\n\ngithub.com/DillyzThe1";
             jester.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.jester.png");
             #endregion
 
             #region sheriff
             Log.LogInfo("Adding a Sheriff!");
-            CustomRole sheriffRole = DillyzUtil.createRole("Sheriff", "Kill the impostor or suicide.", true, false, new Color32(255, 185, 30, 255), false,
+            CustomRole sheriffRole = DillyzUtil.createRole("Sheriff", "Kill suspects with caution.", true, false, new Color32(255, 185, 30, 255), false,
                                                                     CustomRoleSide.Crewmate, VentPrivilege.None, false, true);
             sheriffRole.a_or_an = "a";
+            sheriffRole.blurb = "The Sheriff is a role in which may attempt to kill an impostor at will, however, killing a fellow crewmate will kill themselves!\n\ngithub.com/DillyzThe1";
             sheriffRole.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.sheriff.png");
 
             bool killoncrewkill = true;
@@ -89,6 +90,7 @@ namespace CustomRolePackage
             CustomRole detective = DillyzUtil.createRole("Detective", "Use evidence to trace impostors.", true, false, new Color32(110, 150, 255, 255), false,
                                                                     CustomRoleSide.Crewmate, VentPrivilege.None, false, true);
             detective.a_or_an = "a";
+            detective.blurb = "The Detective is a role in which is able to follow previous footsteps back a set amount of time, caching those of whom are guilty in their path. The catch is that they can only do this with searching ON.\n\ngithub.com/DillyzThe1";
             detective.SetSprite(Assembly.GetExecutingAssembly(), "ClassicRolePackage.Assets.detective.png");
 
             // sound
